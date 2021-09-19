@@ -10,66 +10,33 @@ import Foundation
 // https://leetcode-cn.com/problems/add-two-numbers/
 
 class Solution2 {
-    private var d = 0
     
     func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
-        
+        var carry = 0
         let dummy = ListNode()
         
+        var p1 = l1
+        var p2 = l2
         var cur: ListNode? = dummy
-        var l1P = l1
-        var l2P = l2
         
-        // 全不为空
-        // 进位不为空
-        // 单个不为空
-        
-        while let p1 = l1P, let p2 = l2P {
-            cur?.next = addNode(p1, p2)
+        while p1 != nil || p2 != nil {
+            let val1 = p1?.val ?? 0
+            let val2 = p2?.val ?? 0
             
+            let sum = val1 + val2 + carry
+            carry = sum / 10
+            
+            cur?.next = ListNode(sum % 10)
             cur = cur?.next
-            l1P = l1P?.next
-            l2P = l2P?.next
+            
+            p1 = p1?.next
+            p2 = p2?.next
         }
         
-        while let p1 = l1P {
-            cur?.next = addNode(p1)
-            
-            cur = cur?.next
-            l1P = l1P?.next
-        }
-        
-        while let p2 = l2P {
-            cur?.next = addNode(p2)
-            cur = cur?.next
-            l2P = l2P?.next
-        }
-        
-        while d != 0 {
-            let value = d % 10
-            d = d / 10
-            
-            cur?.next = ListNode(value)
-            cur = cur?.next
+        if carry != 0 {
+            cur?.next = ListNode(carry)
         }
         
         return dummy.next
-    }
-    
-    private func addNode(_ p1: ListNode, _ p2: ListNode) -> ListNode {
-        var value = p1.val + p2.val + d
-        d = value / 10
-        value = value % 10
-        
-        return ListNode(value)
-    }
-    
-    private func addNode(_ p1: ListNode) -> ListNode {
-        var value = p1.val + d
-        
-        d = value / 10
-        value = value % 10
-        
-        return ListNode(value)
     }
 }
