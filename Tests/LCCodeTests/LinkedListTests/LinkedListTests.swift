@@ -20,4 +20,8 @@ final class Solution2Tests: XCTestCase {
         assert(l3!.equals([8,9,9,9,0,0,0,1]))
     }
 
+    func testMergeKLists() {
+        let solution = Solution23()
+        assert(solution.mergeKLists([[1,4,5],[1,3,4],[2,6]].map { $0.listNodes })!.equals([1,1,2,3,4,4,5,6]))
+    }
 }
