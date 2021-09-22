@@ -35,4 +35,10 @@ final class Solution2Tests: XCTestCase {
         let solution = Solution725()
         assert(solution.splitListToParts([1,2,3].listNodes, 5).map { $0?.val } == [1,2,3,nil,nil])
     }
+    
+    func testRotateRight() {
+        let solution = Solution61()
+        assert(solution.rotateRight([1,2,3,4,5].listNodes, 2)!.equals([4,5,1,2,3]))
+        assert(solution.rotateRight([1,2].listNodes, 1)!.equals([2,1]))
+    }
 }

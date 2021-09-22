@@ -26,6 +26,7 @@ class Solution725 {
         
         for i in 0..<k where tmp != nil {
             result[i] = tmp
+            // 这里是精髓
             let subNodeCount = qCount + (i < remainder ? 1 : 0)
             for _ in 1..<subNodeCount {
                 tmp = tmp?.next
