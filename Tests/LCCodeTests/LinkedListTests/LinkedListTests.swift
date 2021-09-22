@@ -41,4 +41,14 @@ final class Solution2Tests: XCTestCase {
         assert(solution.rotateRight([1,2,3,4,5].listNodes, 2)!.equals([4,5,1,2,3]))
         assert(solution.rotateRight([1,2].listNodes, 1)!.equals([2,1]))
     }
+    
+    func testDeleteDuplicates() {
+        let solution = Solution82()
+        assert(solution.deleteDuplicates([1,2,3,3,4,4,5].listNodes)!.equals([1,2,5]))
+    }
+    
+    func testPartition() {
+        let solution = Solution86()
+        assert(solution.partition([1,4,3,2,5,2].listNodes, 3)!.equals([1,2,2,4,3,5]))
+    }
 }

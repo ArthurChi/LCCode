@@ -39,9 +39,11 @@ extension ListNode {
     }
     
     func equals(_ elements: [Int]) -> Bool {
-        let assert = elements.listNodes
-
-        var assertP: ListNode? = assert
+        return equals(elements.listNodes)
+    }
+    
+    func equals(_ listNode: ListNode?) -> Bool {
+        var assertP: ListNode? = listNode
         var sP: ListNode? = self
         
         while assertP != nil && sP != nil {
