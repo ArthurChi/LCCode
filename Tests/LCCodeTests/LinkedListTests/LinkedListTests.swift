@@ -30,4 +30,9 @@ final class Solution2Tests: XCTestCase {
         assert(solution.swapPairs([1,2,3,4].listNodes)!.equals([2,1,4,3]))
         assert(solution.swapPairs([1,2,3].listNodes)!.equals([2,1,3]))
     }
+    
+    func testSplitListToParts() {
+        let solution = Solution725()
+        assert(solution.splitListToParts([1,2,3].listNodes, 5).map { $0?.val } == [1,2,3,nil,nil])
+    }
 }
