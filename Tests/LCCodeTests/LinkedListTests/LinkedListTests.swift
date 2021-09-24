@@ -8,7 +8,7 @@
 import XCTest
 @testable import LCCode
 
-final class Solution2Tests: XCTestCase {
+final class LinkedListTests: XCTestCase {
     
     func testAddTwoNumbers() {
         let solution = Solution2()
@@ -50,5 +50,11 @@ final class Solution2Tests: XCTestCase {
     func testPartition() {
         let solution = Solution86()
         assert(solution.partition([1,4,3,2,5,2].listNodes, 3)!.equals([1,2,2,4,3,5]))
+    }
+    
+    func testAddTwoNumbersII() {
+        let solution = Solution445()
+        let result = solution.addTwoNumbers([7,2,4,3].listNodes, [5,6,4].listNodes)!
+        assert(result.equals([7,8,0,7]), "\(result)")
     }
 }
