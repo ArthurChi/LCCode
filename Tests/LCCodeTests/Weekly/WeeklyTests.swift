@@ -19,4 +19,16 @@ final class WeeklyTests: XCTestCase {
         let result2 = s.maximumDifference([1,5,2,10])
         assert(result2 == 9)
     }
+    
+    func testFractionToDecimal() {
+        let s = Solution166()
+//        let result = s.fractionToDecimal(1, 2)
+//        assert(result == "0.5")
+//        
+//        let result1 = s.fractionToDecimal(2, 3)
+//        assert(result1 == "0.(6)")
+        
+        let result2 = s.fractionToDecimal(7, -12)
+        assert(result2 == "-0.58(3)")
+    }
 }
