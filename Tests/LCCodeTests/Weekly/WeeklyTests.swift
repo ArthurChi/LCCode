@@ -31,4 +31,22 @@ final class WeeklyTests: XCTestCase {
         let result2 = s.fractionToDecimal(7, -12)
         assert(result2 == "-0.58(3)")
     }
+    
+    func testLicenseKeyFormatting() {
+        let s = Solution482()
+        let result = s.licenseKeyFormatting("5F3Z-2e-9-w", 4)
+        assert(result == "5F3Z-2E9W", result)
+        print(result)
+        
+        let result1 = s.licenseKeyFormatting("2-5g-3-J", 2)
+        assert(result1 == "2-5G-3J", result1)
+        print(result1)
+        
+        let result2 = s.licenseKeyFormatting("a-a-a-a", 1)
+        assert(result2 == "A-A-A-A", result2)
+        print(result2)
+        
+        let result3 = s.licenseKeyFormatting("---", 3)
+        assert(result3 == "", result3)
+    }
 }
