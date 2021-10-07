@@ -28,26 +28,23 @@ public extension Array where Element: Comparable {
     }
     
     mutating func sift(from index: Index, until: Int, _ comparison: Compare) {
-        if index > (until >> 1) { return }
         
-        var parent = index
+        var index = index
         
-        let leftIndex = parent << 1 + 1
-        let rightIndex = leftIndex + 1
-        
-        if rightIndex < until && comparison(self[parent], self[rightIndex]) {
-            parent = rightIndex
+        while index < (until >> 1) {
+            var biggestChildIndex = (index << 1) + 1
+            let rightIndex = biggestChildIndex + 1
+            
+            if rightIndex < until && comparison(self[biggestChildIndex], self[rightIndex]) {
+                biggestChildIndex = rightIndex
+            }
+            
+            if comparison(self[biggestChildIndex], self[index]) {
+                break
+            }
+            
+            self.swapAt(index, biggestChildIndex)
+            index = biggestChildIndex
         }
-        
-        if leftIndex < until && comparison(self[parent], self[leftIndex]) {
-            parent = leftIndex
-        }
-        
-        if parent == index {
-            return
-        }
-        
-        self.swapAt(index, parent)
-        sift(from: parent, until: until, comparison)
     }
 }
