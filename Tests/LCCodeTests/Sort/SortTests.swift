@@ -56,9 +56,25 @@ final class SortTests: XCTestCase {
     }
     
     func testHeapSort() {
-        let data = [99, 98, 70, 79, 87, 2, 14, 78, 58, 82]
-        let result = data.heapSort(<)
-        assert(result == data.sorted(by: <), result.description)
+        let result = e.heapSort(<)
+        assert(result == e.sorted(by: <), result.description)
         assert(e.heapSort(>) == e.sorted(by: >))
+    }
+    
+    func testInsertionSort() {
+        let result = e.insertionSort(<)
+        assert(result == e.sorted(by: <), result.description)
+        assert(e.insertionSort(>) == e.sorted(by: >))
+    }
+    
+    func testInsertionSortV1() {
+        let result = e.insertionSortV1(<)
+        assert(result == e.sorted(by: <), result.description)
+        assert(e.insertionSortV1(>) == e.sorted(by: >))
+    }
+    
+    func testInsertionSortV2() {
+        let result = e.insertionSortV2()
+        assert(result == e.sorted(by: <), result.description)
     }
 }
