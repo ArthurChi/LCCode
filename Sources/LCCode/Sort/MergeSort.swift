@@ -31,6 +31,8 @@ public extension Array where Element: Comparable {
     private func merge(_ other: [Element], comparison: Compare) -> [Element] {
         
         var orderPail = [Element]()
+        /// 这里使用了reserveCapacity函数来指定容量, 对于已知长度的数组指定容量, 可以减少动态扩容导致的运行时性能损耗, 但是也有注意的点
+        /// 具体参考: https://www.hackingwithswift.com/articles/128/array-performance-append-vs-reservecapacity
         orderPail.reserveCapacity(self.count + other.count)
         
         var leftIndex = self.startIndex
