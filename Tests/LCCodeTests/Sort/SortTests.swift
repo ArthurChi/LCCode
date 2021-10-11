@@ -77,4 +77,10 @@ final class SortTests: XCTestCase {
         let result = e.insertionSortV2()
         assert(result == e.sorted(by: <), result.description)
     }
+    
+    func testMergeSort() {
+        let result = e.mergeSort(<)
+        assert(result == e.sorted(by: <), result.description)
+        assert(e.mergeSort(>) == e.sorted(by: >))
+    }
 }

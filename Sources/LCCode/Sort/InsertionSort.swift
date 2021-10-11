@@ -12,7 +12,7 @@ public extension Array where Element: Comparable {
     /// 插入排序
     /// - Parameter comparison: 比较规则
     /// - Returns: 排序后的新数组
-    func insertionSort(_ comparison: (Element, Element) -> Bool) -> [Element] {
+    func insertionSort(_ comparison: Compare) -> [Element] {
         guard count > 1 else { return self }
         
         var elements = self
@@ -32,7 +32,7 @@ public extension Array where Element: Comparable {
     /// 优化思路, 减少交换次数, 通过比较, 找到合适的位置, 同时在这个过程中, 将元素向后移动
     /// - Parameter comparison: 比较规则
     /// - Returns: 排序后的新数组
-    func insertionSortV1(_ comparison: (Element, Element) -> Bool) -> [Element] {
+    func insertionSortV1(_ comparison: Compare) -> [Element] {
         guard count > 1 else { return self }
         
         var elements = self

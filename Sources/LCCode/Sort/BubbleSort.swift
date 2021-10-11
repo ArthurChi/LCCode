@@ -16,7 +16,7 @@ public extension Array where Element: Comparable {
     /// 同时需要注意, 在规则有等于的时候, 会造成排序不稳定的情况
     /// - Parameter comparison: 比较规则
     /// - Returns: 排序后的新数组
-    func bubbleSort(_ comparison: (Element, Element) -> Bool) -> [Element] {
+    func bubbleSort(_ comparison: Compare) -> [Element] {
         if count <= 1 { return self }
         var elements = self
         
@@ -37,7 +37,7 @@ public extension Array where Element: Comparable {
     /// 优化思路, 在进行内轮扫描时, 记录当前轮扫描是否有序, 如果有序, 则证明整体有序, 则后续无需继续扫描, 可以直接退出
     /// - Parameter comparison: 比较规则
     /// - Returns: 排序后的新数组
-    func bubbleSortV1(_ comparison: (Element, Element) -> Bool) -> [Element]  {
+    func bubbleSortV1(_ comparison: Compare) -> [Element]  {
         if count <= 1 { return self }
         
         var elements = self
@@ -64,7 +64,7 @@ public extension Array where Element: Comparable {
     /// 这个版本优化包含了v1版本的优化, 同时比v1版本多的功能是对于偏有序的数组(部分有序)的时候, 可以提升效率
     /// - Parameter comparison: 比较规则
     /// - Returns: 排序后的新数组
-    func bubbleSortV2(_ comparison: (Element, Element) -> Bool) -> [Element] {
+    func bubbleSortV2(_ comparison: Compare) -> [Element] {
         if count <= 1 { return self }
         
         var elements = self

@@ -8,7 +8,6 @@
 import Foundation
 
 public extension Array where Element: Comparable {
-    typealias Compare = (Element, Element) -> Bool
     func heapSort(_ comparison: Compare) -> [Element] {
         var elements = self
         var heapSize = elements.count
@@ -21,7 +20,7 @@ public extension Array where Element: Comparable {
         while heapSize > 1 {
             heapSize -= 1
             elements.swapAt(0, heapSize)
-            elements.sift(from: 0, until: heapSize, comparison)
+            elements.siftV1(from: 0, until: heapSize, comparison)
         }
         
         return elements
@@ -46,5 +45,28 @@ public extension Array where Element: Comparable {
             self.swapAt(index, biggestChildIndex)
             index = biggestChildIndex
         }
+    }
+    
+    mutating func siftV1(from index: Index, until: Index, _ comparison: Compare) {
+        guard index <= (until >> 1) else { return }
+        
+        var parent = index
+        let leftChild = (index << 1) + 1
+        let rightChild = leftChild + 1
+        
+        if rightChild < until && comparison(self[parent], self[rightChild]) {
+            parent = rightChild
+        }
+        
+        if leftChild < until && comparison(self[parent], self[leftChild]) {
+            parent = leftChild
+        }
+        
+        if parent == index {
+            return
+        }
+        
+        self.swapAt(index, parent)
+        siftV1(from: parent, until: until, comparison)
     }
 }
