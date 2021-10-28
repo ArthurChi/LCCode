@@ -83,4 +83,16 @@ final class SortTests: XCTestCase {
         assert(result == e.sorted(by: <), result.description)
         assert(e.mergeSort(>) == e.sorted(by: >))
     }
+    
+    func testQuickSort() {
+        let data = [69, 99, 25, 38, 36, 9, 43, 39, 30, 16]
+        let result = data.quickSort(<)
+        assert(result == data.sorted(by: <), result.description)
+//        assert(e.quickSort(>) == e.sorted(by: >))
+    }
+    
+    func testQuickSortV1() {
+        let result = e.quickSortV1()
+        assert(result == e.sorted(by: <), result.description)
+    }
 }
